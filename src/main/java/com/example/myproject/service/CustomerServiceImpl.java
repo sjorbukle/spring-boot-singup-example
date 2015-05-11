@@ -3,13 +3,12 @@ package com.example.myproject.service;
 import com.example.myproject.domain.Customer;
 import com.example.myproject.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
+// servis koji je zaaduzen za business logic za Customer domain object, implementira CustomerService interface
+// i cesto bude vise razlicitih implementacija ovisno o kompleksnosti business logike
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -19,16 +18,6 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
-
-    @Override
-    public Optional<Customer> getUserById(long id) {
-        return Optional.ofNullable(customerRepository.findOne(id));
-    }
-
-//    @Override
-//    public Optional<Customer> findAll() {
-//        return customerRepository.findAll();
-//}
 
     @Override
     public long count() {
@@ -41,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Boolean isEmailAvailable(String email) {
+    public boolean isEmailAvailable(String email) {
         List<Customer> customers = customerRepository.findByEmail(email);
         return customers.isEmpty();
     }

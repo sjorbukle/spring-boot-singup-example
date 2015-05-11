@@ -2,6 +2,8 @@ package com.example.myproject.domain;
 
 import javax.persistence.*;
 
+//domenski objekt za customer-a, definira polja customer-a sa popratim getterima i setterim, i JPA anotacijama
+//koje definiraju koja polja ce se i kako spremati u bazu
 @Entity
 public class Customer {
 
